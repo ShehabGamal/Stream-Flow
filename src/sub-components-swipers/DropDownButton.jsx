@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./button";
 import DropDownCard from "./DropDownCard";
-const sampleData = new Array(7).fill("item name");
+import "./dropdownbutton.css"
 const DropDownButton = (props) => {
   const [open, setOpen] = React.useState(false);
   const drop = React.useRef(null);
@@ -17,17 +17,9 @@ const DropDownButton = (props) => {
     };
   });
   return (
-    <div
-      className="dropdown"
-      ref={drop}
-      style={{
-    
-        width: "calc(75% - 50px)",
-        
-      }}
-    >
-      <Button header={props.header} onClick={() => setOpen(open => !open)} />
-      
+    <div className="dropdown" ref={drop}>
+      <Button header={props.header} onClick={() => setOpen((open) => !open)} />
+
       {open && <DropDownCard text={props.text} setOpen={setOpen} />}
     </div>
   );
