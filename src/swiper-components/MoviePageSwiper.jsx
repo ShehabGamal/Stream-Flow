@@ -39,7 +39,7 @@ export default function MoviePageSwiper() {
       }}
       slideToClickedSlide={true}
       modules={[Pagination, Autoplay]}
-      className="mySwiper"
+      className="movieSwiper"
       autoplay={{
         delay: 8000,
       }}
@@ -68,10 +68,10 @@ export default function MoviePageSwiper() {
     >
       {images.map((image, i) => {
         return (
-          <SwiperSlide>
+          <SwiperSlide className="movieSwiperSlide">
             <StudioLogo src={Logo} alt="" />
             <h3>{image["title"]}</h3>
-            <img className="swiper-image" src={image["image"]} alt="" />
+            <img className="movieSwiperImage" src={image["image"]} alt="" />
           </SwiperSlide>
         );
       })}

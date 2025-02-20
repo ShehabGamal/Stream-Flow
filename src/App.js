@@ -29,9 +29,11 @@ const Holder = styled.div`
   gap: 100px;
   height: 100vh;
   width: calc(100vw - 80px);
+  overflow: hidden;
   @media (max-width: 800px) {
     width: 375px;
     height: 368px;
+    overflow: visible;
   }
 `;
 function App() {
