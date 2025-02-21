@@ -22,7 +22,7 @@ const Container = styled.div`
 export default function Miniheader() {
   return (
     <Container>
-      <Logo src={logo} mini="mini" alt="" />
+      <Logo src={logo} type="mini" alt="" />
       <HeaderPanelButton src={search} alt="" />
     </Container>
   );

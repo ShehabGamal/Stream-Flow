@@ -7,7 +7,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import BottomBar from "./components/BottomBar";
 import MiniHeader from "./components/MiniHeader";
-import StartPage from "./layout/StartPage";
+import IntroPage from "./layout/IntroPage";
 import blade from "./movie-posters/BLADELOGIN.jpeg";
 
 const Container = styled.div`
@@ -56,7 +56,7 @@ function App() {
       ) : login === "login" ? (
         <LoginPage handlelogin={handlelogin} />
       ) : (
-        <StartPage handlelogin={handlelogin} />
+        <IntroPage handlelogin={handlelogin} />
       )}
     </div>
   );
