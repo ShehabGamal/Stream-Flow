@@ -149,7 +149,7 @@ export default function IntroPage(props) {
                 }}
               >
                 {info.header}
-                <DropDownIcon src={cross} />
+                <DropDownIcon id={i} show={show} src={cross} alt=""/>
               </DropDownButton>
               <DropDownCard id={i} show={show}>{info.info}</DropDownCard>
             </DropDownContainer>
