@@ -66,7 +66,7 @@ const Container = styled.div`
 
 export default function MoviePage(props) {
   const [movieTitle, setMovieTitle] = useState("300");
-  const {setMoviePoster}=props;
+  const {setMoviePoster,setMovieTrailer,setModalState}=props;
   return (
     <Container>
       <AppBadge>
@@ -98,10 +98,10 @@ export default function MoviePage(props) {
         Slash Group.
       </MovieDescription>
       <MoviePagePanel>
-        <img src={play} alt="" />
+        <img src={play} onClick={()=>{setModalState(true)}} alt="" />
         <img src={moreinfo} alt="" />
       </MoviePagePanel>
-      <MoviePageSwiper setMoviePoster={setMoviePoster} setMovieTitle={setMovieTitle} />
+      <MoviePageSwiper setMoviePoster={setMoviePoster} setMovieTitle={setMovieTitle} setMovieTrailer={setMovieTrailer}/>
     </Container>
-  );
+      );
 }

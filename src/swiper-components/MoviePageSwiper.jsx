@@ -21,20 +21,49 @@ const StudioLogo = styled.img`
   }
 `;
 export default function MoviePageSwiper(props) {
-  const [images] = useState([
-    { image: require("../movie-posters/300.jpg"), title: "300" },
-    { image: require("../movie-posters/darkknight.jpg"), title: "Dark Knight" },
-    { image: require("../movie-posters/fargo.jpg"), title: "Fargo" },
+  const [movies] = useState([
     {
-      image: require("../movie-posters/manofsteel.jpg"),
-      title: "Man Of Steel",
+      poster: require("../movie-posters/300.jpg"),
+      title: "300",
+      trailer: "https://www.youtube.com/embed/2zqy21Z29ps?si=IUuyzeTjUV6Ya_7w",
     },
-    { image: require("../movie-posters/snowwhite.jpg"), title: "SnowWhite" },
-    { image: require("../movie-posters/thething.jpg"), title: "The Thing" },
-    { image: require("../movie-posters/tron.jpg"), title: "Tron" },
-    { image: require("../movie-posters/x-men.jpg"), title: "X-Men" },
+    {
+      poster: require("../movie-posters/darkknight.jpg"),
+      title: "Dark Knight",
+      trailer: "https://www.youtube.com/embed/EXeTwQWrcwY?si=8KQkWv3wM17Dwa8N",
+    },
+    {
+      poster: require("../movie-posters/fargo.jpg"),
+      title: "Fargo",
+      trailer: "https://www.youtube.com/embed/ju75Sd4yAZw?si=lUx04oTLX0xK9YZW",
+    },
+    {
+      poster: require("../movie-posters/manofsteel.jpg"),
+      title: "Man Of Steel",
+      trailer: "https://www.youtube.com/embed/T6DJcgm3wNY?si=4gqZjNjawQl9s2sz",
+    },
+    {
+      poster: require("../movie-posters/snowwhite.jpg"),
+      title: "SnowWhite",
+      trailer: "https://www.youtube.com/embed/uudKJzOFGlY?si=6-wO1BwcmryiSUW0",
+    },
+    {
+      poster: require("../movie-posters/thething.jpg"),
+      title: "The Thing",
+      trailer: "https://www.youtube.com/embed/JIdw2B6zipc?si=pMwlDK7p6gou_zJZ",
+    },
+    {
+      poster: require("../movie-posters/tron.jpg"),
+      title: "Tron",
+      trailer: "https://www.youtube.com/embed/P78pl1FUXfA?si=idjKLjMo4SUYyeTs",
+    },
+    {
+      poster: require("../movie-posters/x-men.jpg"),
+      title: "X-Men",
+      trailer: "https://www.youtube.com/embed/COvnHv42T-A?si=Nm_c3IrfS5H_025E",
+    },
   ]);
-  const { setMovieTitle, setMoviePoster } = props;
+  const { setMovieTitle, setMoviePoster, setMovieTrailer } = props;
   return (
     <Swiper
       pagination={{
@@ -73,22 +102,23 @@ export default function MoviePageSwiper(props) {
           spaceBetween: 12,
         },
         1000: {
-          slidesPerView:4,
+          slidesPerView: 4,
           spaceBetween: 10,
         },
       }}
     >
-      {images.map((image, i) => {
+      {movies.map((movie, i) => {
         return (
           <SwiperSlide className="movieSwiperSlide">
             <StudioLogo src={logo} alt="" />
-            <h3>{image["title"]}</h3>
+            <h3>{movie["title"]}</h3>
             <img
               className="movieSwiperImage"
-              src={image["image"]}
+              src={movie["poster"]}
               onClick={() => {
-                setMoviePoster(image["image"]);
-                setMovieTitle(image["title"]);
+                setMoviePoster(movie["poster"]);
+                setMovieTitle(movie["title"]);
+                setMovieTrailer(movie["trailer"]);
               }}
               alt=""
             />

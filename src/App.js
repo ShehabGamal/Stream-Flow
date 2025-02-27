@@ -9,6 +9,7 @@ import BottomBar from "./components/BottomBar";
 import MiniHeader from "./components/MiniHeader";
 import IntroPage from "./layout/IntroPage";
 import poster from "./movie-posters/300.jpg"
+import MovieModal from "./sub-components-movie-page/MovieModal";
 
 const Container = styled.div`
   display: flex;
@@ -44,7 +45,9 @@ const Holder = styled.div`
 `;
 function App() {
   const [login, setlogin] = useState("");
-  const [moviePoster, setMoviePoster] = useState(poster)
+  const [moviePoster, setMoviePoster] = useState(poster);
+  const [movieTrailer,setMovieTrailer]=useState("https://www.youtube.com/embed/2zqy21Z29ps?si=IUuyzeTjUV6Ya_7w");
+  const [modalstate,setModalState]=useState(false);
   const handlelogin = (id) => {
     setlogin(id);
   };
@@ -52,11 +55,12 @@ function App() {
     <div className="App" style={{ display: "relative" }}>
       {login === "dashboard" ? (
         <Container moviePoster={moviePoster}>
+          <MovieModal modalstate={modalstate} setModalState={setModalState} movieTrailer={movieTrailer}/>
           <SideBar />
           <MiniHeader />
           <Holder>
             <Header />
-            <MoviePage setMoviePoster={setMoviePoster} />
+            <MoviePage setMoviePoster={setMoviePoster} setModalState={setModalState} setMovieTrailer={setMovieTrailer} />
           </Holder>
           <BottomBar />
         </Container>

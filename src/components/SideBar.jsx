@@ -21,6 +21,7 @@ const Container = styled.div`
   flex-flow: column wrap;
   background-color: #1e293b;
   padding: 10px 0px;
+  z-index: 120;
   @media (max-width: 750px) {
     display: none;
     height: 0;

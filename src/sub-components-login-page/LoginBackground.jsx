@@ -10,7 +10,6 @@ export default function LoginBackground() {
         <div className="shape-orb-two"></div>
         <div className="shape-orb-three"></div>
         <div className="shape-orb-four"></div>
-        <div className="shape-orb-five"></div>
       </div>
     </div>
   );
