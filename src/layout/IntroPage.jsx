@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import logo from "../assets/startpage-assets/Netflix_2015_logo.svg";
-import cross from "../assets/startpage-icons/cross.svg";
+import logo from "../assets/logo.png"
+import cross from "../assets/icons-intro-page/cross.svg";
 import TrendingSwiper from "../swiper-components/TrendingSwiper";
-import download from "../assets/startpage-icons/download.svg";
-import kids from "../assets/startpage-icons/kids.svg";
-import tele from "../assets/startpage-icons/television.svg";
-import mobile from "../assets/startpage-icons/mobile.svg";
+import download from "../assets/icons-intro-page/download.svg";
+import kids from "../assets/icons-intro-page/kids.svg";
+import tele from "../assets/icons-intro-page/television.svg";
+import mobile from "../assets/icons-intro-page/mobile.svg";
 import Banner from "../sub-components-intro-page/Banner";
 import BannerContent from "../sub-components-intro-page/BannerContent";
 import BannerH1 from "../sub-components-intro-page/BannerH1";
@@ -26,6 +26,7 @@ import DropDownButton from "../sub-components-intro-page/DropDownButton.jsx";
 import DropDownCard from "../sub-components-intro-page/DropDownCard.jsx";
 import DropDownIcon from "../sub-components-intro-page/DropDownIcon.jsx";
 import DropDownContainer from "../sub-components-intro-page/DropDownContainer.jsx";
+import IntroBackground from "../sub-components-intro-page/IntroBackground.jsx";
 
 const Container = styled.div`
   display: flex;
@@ -41,24 +42,24 @@ const Container = styled.div`
 
 const dropinfo = [
   {
-    header: "What is netflix",
-    info: "Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
+    header: "What is StreamOn",
+    info: "StreamOn is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
   },
   {
-    header: "how much does netflix cost",
-    info: "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from EGP 100 to EGP 240 a month. No extra costs, no contracts.",
+    header: "how much does StreamOn cost",
+    info: "Watch StreamOn on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from EGP 100 to EGP 240 a month. No extra costs, no contracts.",
   },
   {
     header: "where can i watch",
-    info: "Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.",
+    info: "Watch anywhere, anytime. Sign in with your StreamOn account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.",
   },
   {
     header: "how can i cancel",
-    info: "Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.",
+    info: "StreamOn is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.",
   },
   {
-    header: "what can i watch on netflix",
-    info: "Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
+    header: "what can i watch on StreamOn",
+    info: "StreamOn has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
   },
 ];
 const presentation = [
@@ -83,6 +84,7 @@ const presentation = [
     url: `${kids}`,
   },
 ];
+
 export default function IntroPage(props) {
   const [show, setShow] = useState(null);
   const { handlelogin } = props;
@@ -100,7 +102,6 @@ export default function IntroPage(props) {
     <Container>
       <Banner>
         <BannerTopBar>
-          <Logo type="Banner" src={logo} alt="" />
           <Logo type="Banner" src={logo} alt="" />
         </BannerTopBar>
         <BannerContent>
@@ -122,6 +123,7 @@ export default function IntroPage(props) {
       </Banner>
       <BannerBottom />
       <IntroStudio>
+        <IntroBackground />
         <IntroStudioHeader>Trending Now</IntroStudioHeader>
         <TrendingSwiper />
         <IntroStudioHeader>More Reasons to Join</IntroStudioHeader>
@@ -149,9 +151,11 @@ export default function IntroPage(props) {
                 }}
               >
                 {info.header}
-                <DropDownIcon id={i} show={show} src={cross} alt=""/>
+                <DropDownIcon id={i} show={show} src={cross} alt="" />
               </DropDownButton>
-              <DropDownCard id={i} show={show}>{info.info}</DropDownCard>
+              <DropDownCard id={i} show={show}>
+                {info.info}
+              </DropDownCard>
             </DropDownContainer>
           );
         })}

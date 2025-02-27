@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const IntroStudio = styled.div`
-  background: black;
   display: flex;
   width: 100%;
   height: 100%;
@@ -9,6 +8,8 @@ const IntroStudio = styled.div`
   align-items: center;
   flex-flow: column wrap;
   color: white;
+  z-index: 1;
+  position: relative;
 `;
 
-export default IntroStudio
+export default IntroStudio;

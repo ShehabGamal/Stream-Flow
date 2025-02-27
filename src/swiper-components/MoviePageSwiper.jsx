@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "./moviepageswiper.css";
-import Logo from "../assets/icons-mini-header/logo.svg";
+import logo from "../assets/logo.png";
 import { Pagination, Autoplay } from "swiper/modules";
 import styled from "styled-components";
 
@@ -20,17 +20,21 @@ const StudioLogo = styled.img`
     display: none;
   }
 `;
-export default function MoviePageSwiper() {
+export default function MoviePageSwiper(props) {
   const [images] = useState([
-    { image: require("../movie-posters/joker.jpg"), title: "The Joker" },
-    { image: require("../movie-posters/Hobbit.jpg"), title: "The Hobbit" },
-    { image: require("../movie-posters/1917.jpg"), title: "1917" },
-    { image: require("../movie-posters/wars.jpg"), title: "Star Wars" },
-    { image: require("../movie-posters/joker.jpg"), title: "The Joker" },
-    { image: require("../movie-posters/Hobbit.jpg"), title: "The Hobbit" },
-    { image: require("../movie-posters/1917.jpg"), title: "1917" },
-    { image: require("../movie-posters/wars.jpg"), title: "Star Wars" },
+    { image: require("../movie-posters/300.jpg"), title: "300" },
+    { image: require("../movie-posters/darkknight.jpg"), title: "Dark Knight" },
+    { image: require("../movie-posters/fargo.jpg"), title: "Fargo" },
+    {
+      image: require("../movie-posters/manofsteel.jpg"),
+      title: "Man Of Steel",
+    },
+    { image: require("../movie-posters/snowwhite.jpg"), title: "SnowWhite" },
+    { image: require("../movie-posters/thething.jpg"), title: "The Thing" },
+    { image: require("../movie-posters/tron.jpg"), title: "Tron" },
+    { image: require("../movie-posters/x-men.jpg"), title: "X-Men" },
   ]);
+  const { setMovieTitle, setMoviePoster } = props;
   return (
     <Swiper
       pagination={{
@@ -56,22 +60,38 @@ export default function MoviePageSwiper() {
           slidesPerView: 3,
           spaceBetween: 8,
         },
-        640: {
+        344: {
+          slidesPerView: 3,
+          spaceBetween: 5,
+        },
+        412: {
           slidesPerView: 4,
-          spaceBetween: 40,
+          spaceBetween: 12,
+        },
+        540: {
+          slidesPerView: 5,
+          spaceBetween: 12,
         },
         1000: {
-          slidesPerView: 5,
-          spaceBetween: 30,
+          slidesPerView:4,
+          spaceBetween: 10,
         },
       }}
     >
       {images.map((image, i) => {
         return (
           <SwiperSlide className="movieSwiperSlide">
-            <StudioLogo src={Logo} alt="" />
+            <StudioLogo src={logo} alt="" />
             <h3>{image["title"]}</h3>
-            <img className="movieSwiperImage" src={image["image"]} alt="" />
+            <img
+              className="movieSwiperImage"
+              src={image["image"]}
+              onClick={() => {
+                setMoviePoster(image["image"]);
+                setMovieTitle(image["title"]);
+              }}
+              alt=""
+            />
           </SwiperSlide>
         );
       })}
