@@ -43,7 +43,6 @@ StreamFlow delivers a smooth and responsive user experience with clean UI design
 4. **Build for production**
    ```bash
    npm run build
-    
 ---
 
 ## 👨‍💻 Author
