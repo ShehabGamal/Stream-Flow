@@ -42,24 +42,24 @@ const Container = styled.div`
 
 const dropinfo = [
   {
-    header: "What is StreamOn",
-    info: "StreamOn is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
+    header: "What is StreamFlow ?",
+    info: "StreamFlow is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
   },
   {
-    header: "how much does StreamOn cost",
-    info: "Watch StreamOn on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from EGP 100 to EGP 240 a month. No extra costs, no contracts.",
+    header: "How much does StreamFlow cost ?",
+    info: "Watch StreamFlow on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from EGP 100 to EGP 240 a month. No extra costs, no contracts.",
   },
   {
-    header: "where can i watch",
-    info: "Watch anywhere, anytime. Sign in with your StreamOn account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.",
+    header: "Where can i watch ?",
+    info: "Watch anywhere, anytime. Sign in with your StreamFlow account to watch instantly on the web at our website from your personal computer or on any internet-connected device that offers the StreamFlow app, including smart TVs, smartphones, tablets, streaming media players and game consoles.",
   },
   {
-    header: "how can i cancel",
-    info: "StreamOn is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.",
+    header: "How can i cancel ?",
+    info: "StreamFlow is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.",
   },
   {
-    header: "what can i watch on StreamOn",
-    info: "StreamOn has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
+    header: "What can i watch on StreamFlow   ?",
+    info: "StreamFlow has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
   },
 ];
 const presentation = [
