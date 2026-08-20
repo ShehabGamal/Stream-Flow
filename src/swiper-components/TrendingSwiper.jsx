@@ -53,7 +53,7 @@ export default function TrendingSwiper() {
     >
       {images.map((image, i) => {
         return (
-          <SwiperSlide className="trendingSwiperSlide">
+          <SwiperSlide className="trendingSwiperSlide" key={image["title"] + i}>
             <h3>{image["title"]}</h3>
             <h2>{i + 1}</h2>
             <img className="trendingSwiperImage" src={image["image"]} alt="" />

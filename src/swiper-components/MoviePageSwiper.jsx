@@ -109,7 +109,7 @@ export default function MoviePageSwiper(props) {
     >
       {movies.map((movie, i) => {
         return (
-          <SwiperSlide className="movieSwiperSlide">
+          <SwiperSlide className="movieSwiperSlide" key={movie["title"] + i}>
             <StudioLogo src={logo} alt="" />
             <h3>{movie["title"]}</h3>
             <img

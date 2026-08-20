@@ -1,82 +1,144 @@
 .trendingSwiper {
-  width: calc(85% - 50px);
+  width: 85%;
   height: 280px;
   margin: 0px 0px 50px 0px !important;
   display: flex !important;
   position: relative !important;
-  padding: 0px 0px 0px 60px !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important; /* lets the rank numbers bleed and cards scale on hover */
+  padding: 0px 10px 0px 10px !important;
 }
 
 .trendingSwiperSlide {
-  text-align: center;
-  font-size: 18px;
-  width: 180px !important;
-  height: 268px !important;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  border-radius: 24px;
+  height: 80% !important;
   position: relative;
-  padding: 8px 10px;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.trendingSwiperSlide:hover {
+  transform: scale(1.18);
+  z-index: 20;
+  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.6);
 }
 
 .trendingSwiperImage {
-  display: flex;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 24px;
+  border-radius: 10px;
+  z-index: 1;
 }
-.trendingSwiperSlide h3 {
-  z-index: 10;
+
+.trendingSwiperSlide::after {
+  content: "";
   position: absolute;
-  align-self: flex-end;
-  justify-self: center;
-  margin-left: 20px;
-  margin-top: 520px;
+  inset: 0;
+  border-radius: 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0) 50%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.trendingSwiperSlide:hover::after {
+  opacity: 1;
+}
+
+.trendingSwiperSlide h3 {
+  z-index: 4;
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  right: 10px;
+  margin: 0;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  pointer-events: none;
+}
+
+.trendingSwiperSlide:hover h3 {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .trendingSwiperSlide h2 {
-  align-self: center;
   position: absolute;
-  z-index: 9999;
-  color: rgb(255, 255, 255);
-  border: 2px rgb(0, 0, 0);
-  font-size: 90px;
-  left: -10px;
+  left: -8px;
+  bottom: -14px;
+  z-index: 3;
+  margin: 0;
+  color: rgb(20, 20, 20);
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.85);
+  font-size: clamp(50px, 7vw, 90px);
+  font-weight: 800;
+  line-height: 1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
 }
 
 .swiper-button-prev,
 .swiper-button-next {
   color: white !important;
-  background: rgb(56, 56, 56);
-  opacity: 70%;
-  height: 142px !important;
+  background: rgba(20, 20, 20, 0.75);
+  opacity: 0;
+  height: calc(100% - 24px) !important;
   position: absolute;
-  justify-self: center !important;
+  top: 0 !important;
+  border-radius: 6px;
+  padding: 0px 6px !important;
+  transition: opacity 0.2s ease;
+}
 
-  border-radius: 0.5rem;
-  top: 87px !important;
-  padding: 0px 5px !important;
+.trendingSwiper:hover .swiper-button-prev,
+.trendingSwiper:hover .swiper-button-next {
+  opacity: 0.85;
 }
+
 .swiper-button-next {
-  right: -0px !important;
+  right: 0px !important;
 }
+
 .swiper-button-prev {
-  left: -0px !important;
+  left: 0px !important;
 }
+
 @media (max-width: 412px) {
   .trendingSwiper {
-    width: calc(84% - 50px);
-    align-self: flex-start !important;
-    margin-left: 28px !important;
+    padding: 20px 24px 0px 24px !important;
   }
 }
+
 @media (min-width: 700px) and (max-width: 800px) {
   .trendingSwiper {
-    width: calc(84% - 50px);
-    align-self: flex-start !important;
-    margin-left: 60px !important;
+    padding: 24px 40px 0px 40px !important;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+  .trendingSwiperSlide:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .trendingSwiperSlide h3,
+  .trendingSwiperSlide::after {
+    display: none;
   }
 }
