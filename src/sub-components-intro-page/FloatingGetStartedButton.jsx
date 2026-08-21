@@ -8,6 +8,7 @@ const GetStartedButton = styled.button`
   padding: 7px 17px;
   font-size: 0.95rem;
   font-weight: 600;
+  width:95%;
   cursor: pointer;
   font-family: "Plus Jakarta Sans", serif;
 
