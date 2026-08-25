@@ -15,10 +15,9 @@ const Container = styled.div`
   display: flex;
   flex-flow: row nowrap;
   height: 100vh;
-  width: 100vw;
-  background: ${(props)=>{return `url(${props.moviePoster})`}};
+  background-image: ${(props)=>{return `url(${props.moviePoster})`}};
   background-repeat:no-repeat;
-  background-size:cover;
+  background-size: 100% 100%;
   @media (max-width: 750px) {
     flex-flow: column wrap;
   }

@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
 import star from "../assets/icons-responsive-movie-page/star.svg";
@@ -28,45 +28,63 @@ const Container = styled.div`
   width: calc(100% - 50px);
   margin-left: 50px;
   gap: 32px;
-  @media (max-width:400px) and (max-height:882px) {
-    width:auto;
-    height:auto;
-    row-gap: calc(5px + 2vh);
-    margin-top:calc(5px + 2vh );
-    margin-left:calc(5px + 3vw );
-  }
-  @media (max-width:768px) and (min-height:844px) {
-    width:auto;
-    height:auto;
-    row-gap: calc(10px + 3vh);
-    margin-top:calc(10px + 6vh);
-    margin-left:calc(5px + 3vw);
-  }
-  @media (max:768px) and (min-height:1024px) {
-    width:100vw;
+  @media (max-width: 400px) and (max-height: 882px) {
+    width: auto;
     height: auto;
-    margin-top:30px;
+    row-gap: calc(5px + 2vh);
+    margin-top: calc(5px + 2vh);
+    margin-left: calc(5px + 3vw);
+  }
+  @media (max-width: 768px) and (min-height: 844px) {
+    width: auto;
+    height: auto;
+    row-gap: calc(10px + 3vh);
+    margin-top: calc(10px + 6vh);
+    margin-left: calc(5px + 3vw);
+  }
+  @media (max: 768px) and (min-height: 1024px) {
+    width: 100vw;
+    height: auto;
+    margin-top: 30px;
     gap: 45px;
     margin-left: 23px;
   }
-  @media (max-width:1024px) and (min-height:1366px) {
-    width:100vw;
+  @media (max-width: 1024px) and (min-height: 1366px) {
+    width: 100vw;
     height: auto;
-    margin-top:80px;
+    margin-top: 80px;
     gap: 50px;
     margin-left: 53px;
   }
-  @media (max-width:1024px) and (min-height:600px) {
-    gap:12px;
+  @media (max-width: 1024px) and (min-height: 600px) {
+    gap: 12px;
   }
-  @media (max-width:1024px) and (min-height:800px) {
-    gap:20px;
+  @media (max-width: 1024px) and (min-height: 800px) {
+    gap: 20px;
   }
 `;
 
+const truncateDescription = (text, maxLength) => {
+  if (text.length <= maxLength) return text;
+  const cut = text.slice(0, maxLength);
+  return cut.slice(0, cut.lastIndexOf(" ")) + "...";
+};
+
 export default function MoviePage(props) {
   const [movieTitle, setMovieTitle] = useState("300");
-  const {setMoviePoster,setMovieTrailer,setModalState}=props;
+  const [movieDescription, setMovieDescription] = useState(
+    "based on the 1998 Dark Horse comic book limited series of the same name by Frank Miller and Lynn Varley. The film, like its source material, is a fictionalized retelling of the Battle of Thermopylae in the Greco-Persian Wars. The plot revolves around King Leonidas (Gerard Butler)",
+  );
+  const [movieRating, setMovieRating] = useState(4.9);
+  const [movieDate, setMovieDate] = useState(2008);
+  const [movieGenre, setMovieGenre] = useState("action");
+  const { setMoviePoster, setMovieTrailer, setModalState } = props;
+
+  const stars = [];
+  for (let i = 0; i < Math.floor(movieRating); i++) {
+    stars.push(<img key={i} src={star} alt="star" />);
+  }
+
   return (
     <Container>
       <AppBadge>
@@ -76,32 +94,40 @@ export default function MoviePage(props) {
       </AppBadge>
       <MovieTitle>{movieTitle}</MovieTitle>
       <MovieDetails>
-        <MovieInfo>2028</MovieInfo>
-        <MovieInfo>82 seasons</MovieInfo>
-        <MovieCategory>cartoon</MovieCategory>
+        <MovieInfo>{movieDate}</MovieInfo>
+        <MovieInfo>1080P HD</MovieInfo>
+        <MovieCategory>{movieGenre}</MovieCategory>
         <DesktopScreenMovieRating>
-          <img src={star} alt="" />
-          <img src={star} alt="" />
-          <img src={star} alt="" />
-          <img src={star} alt="" />
-          <img src={star} alt="" />
-          4.8
+          {stars} {/* 2. Simply render the array here */}
+          {movieRating}
         </DesktopScreenMovieRating>
         <SmallScreenMovieRating>
-          <img src={star} alt="" />
-          4.8
+          <img src={star} alt="star" />
+          {movieRating}
         </SmallScreenMovieRating>
       </MovieDetails>
       <MovieDescription>
-        When a small, unsuspecting town becomes the hunting ground for a
-        malevolent entity, a group of unlikely heroes must rise — The Demonic
-        Slash Group.
+        {truncateDescription(movieDescription, 180)}
       </MovieDescription>
       <MoviePagePanel>
-        <img src={play} onClick={()=>{setModalState(true)}} alt="" />
+        <img
+          src={play}
+          onClick={() => {
+            setModalState(true);
+          }}
+          alt=""
+        />
         <img src={moreinfo} alt="" />
       </MoviePagePanel>
-      <MoviePageSwiper setMoviePoster={setMoviePoster} setMovieTitle={setMovieTitle} setMovieTrailer={setMovieTrailer}/>
+      <MoviePageSwiper
+        setMoviePoster={setMoviePoster}
+        setMovieTitle={setMovieTitle}
+        setMovieTrailer={setMovieTrailer}
+        setMovieDescription={setMovieDescription}
+        setMovieRating={setMovieRating}
+        setMovieGenre={setMovieGenre}
+        setMovieDate={setMovieDate}
+      />
     </Container>
-      );
+  );
 }

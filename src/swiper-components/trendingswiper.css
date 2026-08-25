@@ -93,7 +93,7 @@
 .swiper-button-next {
   color: white !important;
   background: rgba(20, 20, 20, 0.75);
-  opacity: 0;
+  opacity: 0 !important;
   height: calc(100% - 24px) !important;
   position: absolute;
   top: 0 !important;
@@ -104,7 +104,17 @@
 
 .trendingSwiper:hover .swiper-button-prev,
 .trendingSwiper:hover .swiper-button-next {
-  opacity: 0.85;
+  opacity: 0.85 !important;
+}
+
+/* Hide + disable interaction on whichever button is at its edge,
+   even on hover — this rule needs to win over the hover rule above */
+.trendingSwiper:hover .swiper-button-prev.swiper-button-disabled,
+.trendingSwiper:hover .swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .swiper-button-next {
