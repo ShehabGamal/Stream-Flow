@@ -29,20 +29,40 @@ StreamFlow delivers a smooth and responsive user experience with clean UI design
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/streamflow.git
-   cd streamflow
+   git clone https://github.com/ShehabGamal/Stream-Flow.git
+   cd Stream-Flow
+   ```
 
 2. **Install dependencies**
    ```bash
    npm install
+   ```
 
 3. **Run the development server**
    ```bash
    npm start
+   ```
 
 4. **Build for production**
    ```bash
    npm run build
+   ```
+
+## 🌐 Deploy to GitHub Pages
+
+The project is configured for the `ShehabGamal/Stream-Flow` repository.
+
+1. **Deploy the production build**
+   ```bash
+   npm run deploy
+   ```
+
+2. **Enable Pages in GitHub**
+
+   In the repository, open **Settings → Pages** and select the `gh-pages` branch as the source. The site will be available at:
+
+   https://shehabgamal.github.io/Stream-Flow/
+
 ---
 
 ## 👨‍💻 Author
