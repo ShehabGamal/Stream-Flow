@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Stream-Flow/static/css/main.9969f3ee.css",
-    "main.js": "/Stream-Flow/static/js/main.28014ecd.js",
+    "main.js": "/Stream-Flow/static/js/main.2e8f7e9a.js",
     "static/js/488.9c92ff38.chunk.js": "/Stream-Flow/static/js/488.9c92ff38.chunk.js",
     "static/media/x-men.jpg": "/Stream-Flow/static/media/x-men.382aee6ffebd1136f81d.jpg",
     "static/media/fargo.jpg": "/Stream-Flow/static/media/fargo.623e5a3714bf3e8c7f26.jpg",
@@ -38,11 +38,11 @@
     "index.html": "/Stream-Flow/index.html",
     "static/media/cross.svg": "/Stream-Flow/static/media/cross.71cc17e302325ef8df300adb9b460de9.svg",
     "main.9969f3ee.css.map": "/Stream-Flow/static/css/main.9969f3ee.css.map",
-    "main.28014ecd.js.map": "/Stream-Flow/static/js/main.28014ecd.js.map",
+    "main.2e8f7e9a.js.map": "/Stream-Flow/static/js/main.2e8f7e9a.js.map",
     "488.9c92ff38.chunk.js.map": "/Stream-Flow/static/js/488.9c92ff38.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9969f3ee.css",
-    "static/js/main.28014ecd.js"
+    "static/js/main.2e8f7e9a.js"
   ]
 }
