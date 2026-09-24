@@ -59,7 +59,7 @@ function App() {
           <MiniHeader />
           <Holder>
             <Header />
-            <MoviePage setMoviePoster={setMoviePoster} setModalState={setModalState} setMovieTrailer={setMovieTrailer} />
+            <MoviePage setMoviePoster={setMoviePoster} setModalState={setModalState} setMovieTrailer={setMovieTrailer} modalstate={modalstate} />
           </Holder>
           <BottomBar />
         </Container>

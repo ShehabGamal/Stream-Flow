@@ -78,7 +78,7 @@ export default function MoviePage(props) {
   const [movieRating, setMovieRating] = useState(4.9);
   const [movieDate, setMovieDate] = useState(2008);
   const [movieGenre, setMovieGenre] = useState("action");
-  const { setMoviePoster, setMovieTrailer, setModalState } = props;
+  const { setMoviePoster, setMovieTrailer, setModalState, modalstate } = props;
 
   const stars = [];
   for (let i = 0; i < Math.floor(movieRating); i++) {
@@ -127,6 +127,7 @@ export default function MoviePage(props) {
         setMovieRating={setMovieRating}
         setMovieGenre={setMovieGenre}
         setMovieDate={setMovieDate}
+        modalstate={modalstate}
       />
     </Container>
   );

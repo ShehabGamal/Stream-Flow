@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -114,9 +114,23 @@ export default function MoviePageSwiper(props) {
     setMovieDate,
     setMovieGenre,
     setMovieDescription,
+    modalstate,
   } = props;
+  const swiperRef = useRef(null);
+
+useEffect(() => {
+  if (!swiperRef.current) return;
+  if (modalstate) {
+    swiperRef.current.autoplay.stop();
+  } else {
+    swiperRef.current.autoplay.start();
+  }
+}, [modalstate]);
   return (
     <Swiper
+      onSwiper={(swiper) => {
+        swiperRef.current = swiper;
+      }}
       pagination={{
         dynamicBullets: true,
         clickable: true,
