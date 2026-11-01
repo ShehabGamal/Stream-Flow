@@ -32,7 +32,6 @@ import EmailFormRow from "../sub-components-intro-page/EmailFormRow.jsx";
 import EmailInput from "../sub-components-intro-page/EmailInput.jsx";
 import FloatingCTABar from "../sub-components-intro-page/FloatingCTABar.jsx";
 import FloatingGetStartedButton from "../sub-components-intro-page/FloatingGetStartedButton.jsx";
-import Footer from "../sub-components-intro-page/Footer.jsx";
 import LanguageSelect from "../sub-components-intro-page/LanguageSelect.jsx";
 import TopBarRight from "../sub-components-intro-page/TopBarRight.jsx";
 import FooterIntroPage from "../sub-components-intro-page/Footer.jsx";
