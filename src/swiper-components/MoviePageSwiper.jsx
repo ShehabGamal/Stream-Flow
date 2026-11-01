@@ -186,11 +186,13 @@ useEffect(() => {
       {movies.map((movie, i) => {
         return (
           <SwiperSlide className="movieSwiperSlide" key={movie["title"] + i}>
-            <StudioLogo src={logo} alt="" />
+            <StudioLogo src={logo} alt="" loading="lazy" />
             <h3>{movie["title"]}</h3>
             <img
               className="movieSwiperImage"
               src={movie["poster"]}
+              loading="lazy"
+              decoding="async"
               onClick={() => {
                 setMoviePoster(movie["poster"]);
                 setMovieTitle(movie["title"]);

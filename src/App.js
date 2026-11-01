@@ -1,73 +1,34 @@
 import "./App.css";
-import Header from "./components/Header";
-import SideBar from "./components/SideBar";
-import MoviePage from "./layout/MoviePage";
-import LoginPage from "./layout/LoginPage";
-import { useState } from "react";
-import styled from "styled-components";
-import BottomBar from "./components/BottomBar";
-import MiniHeader from "./components/MiniHeader";
-import IntroPage from "./layout/IntroPage";
-import poster from "./movie-posters/300.jpg"
-import MovieModal from "./sub-components-movie-page/MovieModal";
+import { lazy, Suspense, useState } from "react";
+import PageLoader from "./components/PageLoader";
 
-const Container = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  height: 100vh;
-  background-image: ${(props)=>{return `url(${props.moviePoster})`}};
-  background-repeat:no-repeat;
-  background-size: 100% 100%;
-  @media (max-width: 750px) {
-    flex-flow: column wrap;
-  }
-`;
-const Holder = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-flow: column nowrap;
-  gap: 100px;
-  height: 100vh;
-  width: calc(100vw - 80px);
-  overflow: hidden;
-  @media (max-width: 750px) {
-    width: 375px;
-    height: 368px;
-    overflow: visible;
-  }
-  @media (max-width:1024px) and (min-height:600px) {
-    gap:30px;
-  }
-  @media (max-width:1024px) and (min-height:800px) {
-    gap:60px;
-  }
-`;
+// Each page is split into its own chunk and only downloaded when needed.
+// The intro page is the landing page, so the login page and dashboard are
+// prefetched in the background (browser idle time) once it has loaded.
+const IntroPage = lazy(() => import("./layout/IntroPage"));
+const LoginPage = lazy(() =>
+  import(/* webpackPrefetch: true */ "./layout/LoginPage"),
+);
+const Dashboard = lazy(() =>
+  import(/* webpackPrefetch: true */ "./layout/Dashboard"),
+);
+
 function App() {
   const [login, setlogin] = useState("");
-  const [moviePoster, setMoviePoster] = useState(poster);
-  const [movieTrailer,setMovieTrailer]=useState("https://www.youtube.com/embed/2zqy21Z29ps?si=IUuyzeTjUV6Ya_7w");
-  const [modalstate,setModalState]=useState(false);
   const handlelogin = (id) => {
     setlogin(id);
   };
   return (
     <div className="App" style={{ display: "relative" }}>
-      {login === "dashboard" ? (
-        <Container moviePoster={moviePoster}>
-          <MovieModal modalstate={modalstate} setModalState={setModalState} movieTrailer={movieTrailer}/>
-          <SideBar />
-          <MiniHeader />
-          <Holder>
-            <Header />
-            <MoviePage setMoviePoster={setMoviePoster} setModalState={setModalState} setMovieTrailer={setMovieTrailer} modalstate={modalstate} />
-          </Holder>
-          <BottomBar />
-        </Container>
-      ) : login === "login" ? (
-        <LoginPage handlelogin={handlelogin} />
-      ) : (
-        <IntroPage handlelogin={handlelogin} />
-      )}
+      <Suspense fallback={<PageLoader />}>
+        {login === "dashboard" ? (
+          <Dashboard />
+        ) : login === "login" ? (
+          <LoginPage handlelogin={handlelogin} />
+        ) : (
+          <IntroPage handlelogin={handlelogin} />
+        )}
+      </Suspense>
     </div>
   );
 }

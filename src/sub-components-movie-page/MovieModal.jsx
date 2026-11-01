@@ -12,15 +12,21 @@ export default function MovieModal(props) {
       >
         Close Trailer
       </button>
-      <iframe
-        className="trailer"
-        src={movieTrailer}
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
+      {/* Only mount the YouTube iframe while the modal is open, so the
+          player isn't downloaded until the user actually asks for it
+          (this also stops playback when the modal is closed). */}
+      {modalstate && (
+        <iframe
+          className="trailer"
+          src={movieTrailer}
+          title="YouTube video player"
+          frameBorder="0"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+      )}
     </div>
   );
 }

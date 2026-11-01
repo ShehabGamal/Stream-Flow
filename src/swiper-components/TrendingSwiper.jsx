@@ -56,7 +56,7 @@ export default function TrendingSwiper() {
           <SwiperSlide className="trendingSwiperSlide" key={image["title"] + i}>
             <h3>{image["title"]}</h3>
             <h2>{i + 1}</h2>
-            <img className="trendingSwiperImage" src={image["image"]} alt="" />
+            <img className="trendingSwiperImage" src={image["image"]} alt="" loading="lazy" decoding="async" />
           </SwiperSlide>
         );
       })}

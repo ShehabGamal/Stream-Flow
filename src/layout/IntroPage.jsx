@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
 import cross from "../assets/icons-intro-page/cross.svg";
-import TrendingSwiper from "../swiper-components/TrendingSwiper.jsx";
+import PageLoader from "../components/PageLoader.jsx";
 import download from "../assets/icons-intro-page/download.svg";
 import kids from "../assets/icons-intro-page/kids.svg";
 import tele from "../assets/icons-intro-page/television.svg";
@@ -36,6 +36,12 @@ import Footer from "../sub-components-intro-page/Footer.jsx";
 import LanguageSelect from "../sub-components-intro-page/LanguageSelect.jsx";
 import TopBarRight from "../sub-components-intro-page/TopBarRight.jsx";
 import FooterIntroPage from "../sub-components-intro-page/Footer.jsx";
+
+// The trending swiper sits below the fold, so it (and the Swiper library)
+// is split into its own chunk and loaded without blocking the banner.
+const TrendingSwiper = lazy(
+  () => import("../swiper-components/TrendingSwiper.jsx"),
+);
 
 const Container = styled.div`
   display: flex;
@@ -213,7 +219,9 @@ export default function IntroPage(props) {
       <IntroStudio>
         <IntroBackground />
         <IntroStudioHeader>Trending Now </IntroStudioHeader>
-        <TrendingSwiper />
+        <Suspense fallback={<PageLoader height="330px" transparent />}>
+          <TrendingSwiper />
+        </Suspense>
         <IntroStudioHeader>More Reasons to Join</IntroStudioHeader>
         <div
           ref={trendingSectionRef}
@@ -227,7 +235,7 @@ export default function IntroPage(props) {
                 <IntroStudioPresentationParagraph>
                   {card.info}
                 </IntroStudioPresentationParagraph>
-                <IntroStudioPresentationIcon src={card.url} />
+                <IntroStudioPresentationIcon src={card.url} alt="" loading="lazy" />
               </IntroStudioPresentationCard>
             );
           })}
@@ -243,7 +251,7 @@ export default function IntroPage(props) {
                 }}
               >
                 {info.header}
-                <DropDownIcon id={i} show={show} src={cross} alt="" />
+                <DropDownIcon id={i} show={show} src={cross} alt="" loading="lazy" />
               </DropDownButton>
               <DropDownCard id={i} show={show}>
                 {info.info}
